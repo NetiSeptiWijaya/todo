@@ -7,9 +7,9 @@ import { Task } from "./entity/Task";
 export const AppDataSource = new DataSource({
     type: "mysql",
     host: "localhost",
-    port: 5432,
-    username: "Neti09",
-    password: "521012009",
+    port: 3306,
+    username: "root",
+    password: "",
     database: "todo",
     synchronize: true,
     logging: false,

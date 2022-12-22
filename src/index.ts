@@ -39,22 +39,46 @@ AppDataSource.initialize().then(async () => {
         menu();
         input_menu = prompt("Masukkan Pilihan Operasi yang ingin anda lakukan ? ");
         console.log(`Pilihan Anda: ${input_menu}`);
-        if (parseInt(input_menu) === 1) {
+        if (parseInt(input_menu) === Number(1)) {
             console.log("Anda Memilih Operasi Tambah Data Task");
             const input_data = prompt("Masukkan Nama Task : ");
             let task = new Task();
             task.name = input_data;
             task.is_done = false;
             await AppDataSource.manager.save(task);
-        } else if (input_menu === 2) {
+        } else if (input_menu == Number(2)) {
             console.log("Melakukan Operasi Menampilkan Daftar Tugas");
-        } else if (input_menu === 3) {
+            // tampilkan semua data yang ada dalam database
+        } else if (input_menu == Number(3)) {
             console.log("Melakukan Operasi Melakukan Ubah Tugas");
-        } else if (input_menu === 4) {
+            // tampilkan aksi menerima input nomor task yang ingin diubah
+            const input_task_number = prompt("Masukkan Nomor Task : ");
+            // cari data yang diinginkan oleh pengguna
+            const input_task_number_int = Number(input_task_number)
+            const task = await AppDataSource.manager.findOneBy(Task, {
+                id: input_task_number_int,
+            });
+             
+            // terima input dari pengguna
+            const input_task_name = prompt("Masukkan Nama Task yang baru: ");
+
+            // perbaharui data yang dimaksud oleh pengguna
+            task.name = input_task_name;
+            await AppDataSource.manager.save(task);
+            console.log("Daftar Tugas Diperbaharui");
+        } else if (input_menu == Number(4)) {
             console.log("Melakukan Operasi Melakukan Hapus Tugas");
-        } else if (input_menu === 5) {
+            // tampilkan aksi menerima input nomor task yang ingin dihapus
+            // cari data yang ingin dihapus
+            // hapus data
+            // tampilkan pesan ke pengguna bahwa data telah dihapus
+        } else if (input_menu == Number(5)) {
             console.log("Melakukan Operasi Melakukan Selesai Tugas");
-        } else if (input_menu === 0) {
+            // tampilkan aksi menerima input nomor task yang ingin diubah
+            // cari data yang diinginkan oleh pengguna
+            // merubah is_done dari false menjadi true
+            // perbaharui data yang dimaksud oleh pengguna
+        } else if (input_menu == Number(0)) {
             console.log("Terimakasih telah menggunakan applikasi kami");
             return process.exit(1);
         }
