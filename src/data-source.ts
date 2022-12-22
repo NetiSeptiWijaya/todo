@@ -2,6 +2,8 @@ import "reflect-metadata"
 import { DataSource } from "typeorm";
 import { Task } from "./entity/Task";
 
+// ini config datase
+
 export const AppDataSource = new DataSource({
     type: "mysql",
     host: "localhost",
