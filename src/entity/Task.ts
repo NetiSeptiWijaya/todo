@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
 
 // @Entity({ schema: 'authority', name: 'groups' })
-@Entity({name: 'tasks'})
+@Entity({name: 'tasks' })
 export class Task {
 
     @PrimaryGeneratedColumn()
