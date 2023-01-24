@@ -46,7 +46,7 @@ AppDataSource.initialize().then(async () => {
             task.name = input_data;
             task.is_done = false;
             await AppDataSource.manager.save(task);
-        } else if (input_menu == Number(2) ) {
+        } else if (input_menu == Number(2)) {
             console.log("Melakukan Operasi Menampilkan Daftar Tugas");
             // tampilkan semua data yang ada dalam database
         } else if (input_menu == Number(3)) {
